@@ -2,7 +2,9 @@ package com.example.demo.entity;
 
 
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.example.demo.base.UBaseEntity;
 import lombok.Data;
@@ -17,8 +19,13 @@ import lombok.Data;
 @Data
 @SuppressWarnings("serial")
 @TableName("user")
-public class User extends UBaseEntity<User> {
+public class User  {
 
+    /**
+     * 实体编号（唯一标识）
+     */
+    @TableId(value = "id",type= IdType.ASSIGN_UUID)
+    protected String id;
 
     /**
      * 用户名
@@ -40,6 +47,9 @@ public class User extends UBaseEntity<User> {
 
     @TableField(value = "account")
     private String account;
+
+    @TableField(value = "salt")
+    private String salt;
 
 
 }

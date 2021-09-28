@@ -10,4 +10,8 @@
         u.account=#{account}
     </select>
 
+    <select id="queryAccount" resultType="int">
+        select count(1) from user where account=#{account}
+    </select>
+
 </mapper>

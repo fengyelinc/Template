@@ -67,9 +67,9 @@ private UserService userService;
             throw new UnknownAccountException();//没找到帐号
         }
 
-        return new SimpleAuthenticationInfo(user,
+        return new SimpleAuthenticationInfo(user.getAccount(),
                 user.getPassword(),                        //密码
-//                ByteSource.Util.bytes("".getBytes()),      //加盐
+                ByteSource.Util.bytes(user.getSalt().getBytes()),      //加盐
                 getName());                                //realm name
     }
 }

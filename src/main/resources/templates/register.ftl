@@ -2,7 +2,7 @@
 <html class="loginHtml">
 <head>
     <meta charset="utf-8">
-    <title>测试登录页</title>
+    <title>测试用户注册</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -17,29 +17,28 @@
 <body>
 <div class="login">
     <div class="login_title">
-        <p>测试登录页</p>
+        <p>测试用户注册</p>
     </div>
     <div class="login_main">
         <div class="main_left"></div>
         <div class="main_right">
-            <div class="right_title">用户登录</div>
-            <form class="layui-form" action="${rc.contextPath}/login/main" method="post">
+            <div class="right_title">用户注册</div>
+            <form class="layui-form" action="${rc.contextPath}/submit/register" method="post">
                 <div class="layui-form-item">
                     <img src="${rc.contextPath}/static/images/username.png" alt="">
-                    <input type="text" class="layui-input" name="account" value="" placeholder="请输入账号" lay-verify="required"  autocomplete="off">
+                    <input type="text" class="layui-input" name="username" value="" placeholder="请输入账号" lay-verify="required"  autocomplete="off">
                 </div>
                 <div class="layui-form-item">
                     <img src="${rc.contextPath}/static/images/password.png" alt="">
                     <input type="password" class="layui-input" name="password" value="" placeholder="请输入密码" lay-verify="required"  autocomplete="off">
                 </div>
-                <div class="layui-form-item" style="margin-left: 50px">
-                    <input type="checkbox" name="rememberMe" value="true" lay-skin="primary" checked title="记住帐号?">
-                </div>
+<#--                <div class="layui-form-item" style="margin-left: 50px">-->
+<#--                    <input type="checkbox" name="rememberMe" value="true" lay-skin="primary" checked title="记住帐号?">-->
+<#--                </div>-->
                 <div class="layui-form-item" style="text-align: center">
-                    <button class="layui-btn login_btn" lay-submit="" lay-filter="login">登录</button>
+                    <button class="layui-btn login_btn" lay-submit="" lay-filter="login">立即注册</button>
                 </div>
             </form>
-            <button class="layui-btn login_btn" id="register">注册</button>
         </div>
     </div>
     <div class="login_footer">
@@ -61,26 +60,11 @@
             $ = layui.jquery,
             form = layui.form;
 
-        // $(document).ready(function() {
-        //     var srcBgArray = ["https://static.myp.com/chun.jpg",
-        //         "https://static.myp.com/xia.jpg",
-        //         "https://static.myp.com/qiu.jpg",
-        //         "https://static.myp.com/dong.jpg"];
-        //     $('#bg-body').bcatBGSwitcher({
-        //         timeout:5000,
-        //         urls: srcBgArray,
-        //         alt: 'Full screen background image'
-        //     });
-        // });
 
-        $("#mycode").on('click',function(){
-            var t = Math.random();
-            $("#mycode")[0].src="${rc.contextPath}/genCaptcha?t= "+t;
-        });
-
-        $("#register").on('click',function () {
-            location.href="${rc.contextPath}/register";
-        })
+        <#--$("#mycode").on('click',function(){-->
+        <#--    var t = Math.random();-->
+        <#--    $("#mycode")[0].src="${rc.contextPath}/genCaptcha?t= "+t;-->
+        <#--});-->
 
         form.on('submit(login)', function(data) {
             var loadIndex = layer.load(2, {
@@ -97,7 +81,7 @@
                     location.href="${rc.contextPath}/"+res.data.url;
                 }else{
                     layer.msg(res.message);
-                    $("#mycode").click();
+                    // $("#mycode").click();
                 }
             });
             return false;

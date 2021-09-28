@@ -12,4 +12,6 @@ import com.example.demo.entity.VO.UserVO;
 public interface UserService extends IBaseService<User,UserVO> {
 
     User selectUserByAccount(String account);
+
+    int queryAccount(String uuid6);
 }

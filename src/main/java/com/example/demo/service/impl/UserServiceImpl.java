@@ -20,4 +20,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public User selectUserByAccount(String account) {
         return this.baseMapper.selectUserByAccount(account);
     }
+
+    @Override
+    public int queryAccount(String uuid6) {
+        return this.baseMapper.queryAccount(uuid6);
+    }
 }
