@@ -1,0 +1,41 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /demo     #web启动动时，项目的名称
+  tomcat:
+    uri-encoding: UTF-8     #配置tomcat的请求编码
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+  #视图配置
+  mvc:
+    static-path-pattern: /static/**
+  freemarker:
+    cache: false
+    charset: UTF-8
+    suffix: .ftl
+    enabled: true            # 是否启用freemarker
+    content-type: text/html
+    template-loader-path: classpath:/templates/          # 设定模板的加载路径，多个以逗号分隔，默认:
+    request-context-attribute: rc                       #定义后就可以使用${rc.contextPath}
+
+
+#mybatisPlus
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml,classpath:mapper/**/*.xml
+  #实体扫描，多个package用逗号或者分号隔离
+  typeAliasesPackage: com.example.*.entity
+  global-config:
+    db-config:
+      id-type: auto
+      insert-strategy: not_empty
+      update-strategy: not_empty
+      table-underline: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

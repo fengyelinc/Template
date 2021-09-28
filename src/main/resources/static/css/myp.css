@@ -1,0 +1,243 @@
+.layui-btn-container .layui-btn {
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+.layui-table, .layui-table-view {
+    margin: 1px 0;
+}
+.layui-form-item .layui-inline {
+    margin-bottom: 1px;
+    margin-right: 1px;
+}
+.layui-form-item {
+    margin-bottom: 5px;
+    clear: both;
+}
+.myp-form-label {
+    float: left;
+    display: block;
+    width: 80px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: right;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #000000;
+}
+.myp-input{
+    width: 120px;
+    display: block;
+    padding-left: 10px;
+    height: 23px;
+    line-height: 1.3;
+    line-height: 38px\9;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #e4e4e4;
+    background-color: #fff;
+    border-radius: 2px;
+}
+.myp-inline{
+    float: left;
+    margin-top: 2px;
+}
+.layui-btn-sm {
+    height: 22px;
+    line-height: 22px;
+    font-size: 12px;
+    padding: 0px 10px;
+}
+.layui-table-tool-self {
+    position: absolute;
+    right: 17px;
+    top: 5px;
+}
+.myp-search{
+    float: left;
+    width: 95%;
+}
+.myp-search-btn{
+    float: left;
+    width: 170px;
+}
+.dtree-nav-item {
+    line-height: 20px;
+    padding-left: 16px;
+}
+.layui-table-tool {
+    padding: 5px 15px;
+    min-height: 30px;
+}
+.layui-table-view .layui-table td, .layui-table-view .layui-table th {
+    padding: 0px 0px;
+}
+.layui-table-tool-self {
+    top: 2px;
+}
+
+.myp-field-title {
+    padding-left: 5px;
+    border-left-style: solid;
+    border-left-width: 3px;
+    font-size: 20px;
+    font-weight: 400;
+}
+.myp-no-data{
+    margin: 4px 0px 4px 0px;
+    padding-left: 20px;
+    font-size: 16px;
+    color: red;
+}
+
+.sacw-index-search{
+    width: 98.7%;
+    height: 50px;
+    border:1px solid #e8dfdf;
+}
+
+.sacw-index-context{
+    margin-top: 10px;
+    width: 100%;
+}
+
+.sacw-index-context-text{
+    float: left;
+}
+
+.text-div{
+    width: 200px;
+    height: 200px;
+    border:1px solid #e8dfdf;
+    margin-bottom: 2px;
+}
+
+.sacw-index-context-text .title{
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 新宋体;
+}
+.sacw-context{
+
+}
+.sacw-line{
+    height: 20px;
+    margin: 20px;
+}
+
+.sacw-index-context-chart{
+    width: 800px;
+    float: left;
+}
+
+.sacw-line-left{
+    float: left;
+    font-size: 20px;
+    font-family: 新宋体;
+    color: #1f0c06;
+}
+
+.sacw-line-right{
+    float: right;
+    font-size: 20px;
+    font-family: 新宋体;
+}
+
+.sacw-chart-1{
+    border:1px solid #e8dfdf;
+    float: left;
+    height:404px;
+    margin-left: 2px;
+}
+
+.sacw-chart-2{
+    border:1px solid #e8dfdf;
+    float: left;
+    margin-left: 2px;
+    margin-top: 2px;
+}
+.sacw-top-line{
+    width: 200px;
+    border-top:1px solid #e8dfdf;
+}
+
+.hw-div{
+    border: 1px solid #928d8d;
+    width: 98%;
+    height: 250px;
+    border-radius: 5px;
+    padding: 1px 1px 1px 1px;
+}
+.data-div{
+    margin-top: 5px;
+    border: 1px solid #928d8d;
+    width: 98%;
+    height: 500px;
+    border-radius: 5px;
+    padding: 1px 1px 1px 1px;
+}
+.hw-div-room{
+    width: 15%;
+    height: 95%;
+    margin-top: 5px;
+    margin-left: 5px;
+    float: left;
+    border-radius: 20px 20px 2px 2px;
+    font-weight: bold;
+    background: #0caea6;
+}
+.hw-div-room-tilte{
+    margin-left: 5px;
+    font-size: 18px;
+}
+.hw-div-room-context{
+    margin-top: 20px;
+    margin-left: 40px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.hw-div-room-context-list{
+    margin-top: 5px;
+    margin-right: 5px;
+}
+.hw-div-room-context-list label{
+    color: black;
+    text-align: right;
+}
+.hw-div-room-context-list span{
+    margin-left: 5px;
+    color: #585656;
+}
+
+.not-use{
+    color: green!important;
+}
+.hw-div-item{
+    background: white!important;
+}
+.a-button{
+    margin-left: -4px;
+    font-size: 14px;
+    width: 80px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    display: inline-block;
+    color: black;
+    cursor:pointer;
+}
+.a-this{
+    background: #1AA094;
+    color: white;
+}
+.table{
+    display: none;
+}
+.this-table{
+    display: block;
+}
+
+.required-span{
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+}
