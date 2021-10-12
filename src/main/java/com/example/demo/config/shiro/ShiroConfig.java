@@ -1,12 +1,19 @@
 package com.example.demo.config.shiro;
 
 
+import com.example.demo.config.cache.RedisCacheManger;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.servlet.SimpleCookie;
+import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheManager;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -67,6 +74,7 @@ public class ShiroConfig {
     /**
      * 创建自定义的realm
      * bean名字默认是方法名
+     * 登录时的md5解码
      * @return
      */
     @Bean
@@ -79,7 +87,26 @@ public class ShiroConfig {
         //设置散列次数
         credentialsMatcher.setHashIterations(1024);
         myShiroRealm.setCredentialsMatcher(credentialsMatcher);
+
+        //开启缓存管理(本地缓存Ehcache)
+        myShiroRealm.setCacheManager(new RedisCacheManger());
+        myShiroRealm.setCachingEnabled(true);  //开启缓存
+        myShiroRealm.setAuthenticationCachingEnabled(true);  //开启认证缓存
+        myShiroRealm.setAuthenticationCacheName("authentication");
+        myShiroRealm.setAuthorizationCachingEnabled(true);  //开启授权缓存
+        myShiroRealm.setAuthorizationCacheName("authorization");
         return myShiroRealm;
+    }
+
+
+    @Bean
+    public CookieRememberMeManager cookieRememberMeManager() {
+        CookieRememberMeManager cookieRememberMeManager = new CookieRememberMeManager();
+        SimpleCookie simpleCookie = new SimpleCookie("rememberMe");
+        simpleCookie.setMaxAge(259200000);
+        cookieRememberMeManager.setCookie(simpleCookie);
+        cookieRememberMeManager.setCipherKey(Base64.decode("6ZmI6I2j5Y+R5aSn5ZOlAA=="));
+        return cookieRememberMeManager;
     }
 }
 

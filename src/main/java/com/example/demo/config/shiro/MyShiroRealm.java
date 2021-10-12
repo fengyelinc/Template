@@ -40,11 +40,13 @@ private UserService userService;
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-
+        System.out.println("-------身份授权方法--------");
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-        String username = (String) principalCollection.getPrimaryPrincipal();
+        //获取身份信息
+        String account = (String) principalCollection.getPrimaryPrincipal();
+        //根据主身份信息获取角色 和 权限信息
         Set<String> roles = new HashSet<>();
-        Role role = roleService.getRoleByUserName(username);
+        Role role = roleService.getRoleByUserName(account);
         roles.add(role.getRoleName());
         info.setRoles(roles);
         return info;
@@ -67,7 +69,7 @@ private UserService userService;
             throw new UnknownAccountException();//没找到帐号
         }
 
-        return new SimpleAuthenticationInfo(user.getAccount(),
+        return new SimpleAuthenticationInfo(user.getAccount(),  //这里可以自定义用户信息存入
                 user.getPassword(),                        //密码
                 ByteSource.Util.bytes(user.getSalt().getBytes()),      //加盐
                 getName());                                //realm name

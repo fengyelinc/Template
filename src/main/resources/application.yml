@@ -35,6 +35,10 @@ spring:
     content-type: text/html
     template-loader-path: classpath:/templates/          # 设定模板的加载路径，多个以逗号分隔，默认:
     request-context-attribute: rc                       #定义后就可以使用${rc.contextPath}
+  redis:
+    port: 6379
+    host: 127.0.0.1
+    database: 0
 
 
 #mybatisPlus
@@ -52,3 +56,4 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     cache-enabled: false
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
