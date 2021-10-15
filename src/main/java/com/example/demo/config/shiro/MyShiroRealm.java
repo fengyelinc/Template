@@ -69,7 +69,7 @@ private UserService userService;
             throw new UnknownAccountException();//没找到帐号
         }
 
-        return new SimpleAuthenticationInfo(user.getAccount(),  //这里可以自定义用户信息存入
+        return new SimpleAuthenticationInfo(user.getAccount(),  //自定义Authentication对象，使得Subject除了携带用户的登录名外还可以携带更多信息.
                 user.getPassword(),                        //密码
                 ByteSource.Util.bytes(user.getSalt().getBytes()),      //加盐
                 getName());                                //realm name

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
  * todo:springMVC配置文件
+ * 配置拦截器
  */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {

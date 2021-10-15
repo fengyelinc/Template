@@ -80,7 +80,7 @@
     </div>
     <!-- 底部 -->
     <div class="layui-footer footer">
-        <p><span>Copyright @2021 江苏人华警用装备有限公司</span>　　</p>
+        <p><span>Copyright @2021 江苏有限公司</span>　　</p>
     </div>
 </div>
 
