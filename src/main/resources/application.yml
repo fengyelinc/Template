@@ -39,7 +39,12 @@ spring:
     port: 6379
     host: 127.0.0.1
     database: 0
-
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: cc
+    password: 123
+    virtual-host: /ems       #虚拟机
 
 #mybatisPlus
 mybatis-plus:
