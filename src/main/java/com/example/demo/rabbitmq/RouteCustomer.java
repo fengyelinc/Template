@@ -31,4 +31,6 @@ public class RouteCustomer {
     public void receive2(String message){
         System.out.println("message2 ="+message);
     }
+
+
 }
