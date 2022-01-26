@@ -10,6 +10,7 @@ import com.example.demo.utils.Constants;
 import com.example.demo.utils.SaltUtils;
 import com.example.demo.utils.StringHelper;
 import com.example.demo.utils.VerifyCodeUtil;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.UnauthorizedException;
@@ -48,7 +49,7 @@ public class LoginController {
     }
 
     /**
-     * 登录
+     * 后台页面登录
      *
      * @param request
      * @return
@@ -146,13 +147,18 @@ public class LoginController {
     }
 
 
+    /**
+     * 注册
+     * @param request
+     * @return
+     */
     @PostMapping("submit/register")
     @ResponseBody
     public RestResponse submitRegistration(HttpServletRequest request) {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         User user = new User();
-        user.setUsername(username);
+        user.setName(username);
         String uuid6 = "";
         int count = 1;
         //去重

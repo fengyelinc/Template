@@ -1,7 +1,7 @@
 server:
   port: 9090
   servlet:
-    context-path: /demo     #web启动动时，项目的名称
+    context-path: /     #web启动动时，项目的名称
   tomcat:
     uri-encoding: UTF-8     #配置tomcat的请求编码
 
@@ -27,6 +27,8 @@ spring:
   #视图配置
   mvc:
     static-path-pattern: /static/**
+    pathmatch:
+      matching-strategy: ant_path_matcher
   freemarker:
     cache: false
     charset: UTF-8

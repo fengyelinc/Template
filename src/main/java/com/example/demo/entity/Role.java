@@ -22,15 +22,15 @@ public class Role extends UBaseEntity<Role> {
     /**
      * 角色名
      */
-    @TableField(value = "role_name")
-    private String roleName;
+    @TableField(value = "name")
+    private String name;
 
     /**
      * 说明
      */
 
-    @TableField(value = "remarks")
-    private String remarks;
+    @TableField(value = "remark")
+    private String remark;
 
 
 }

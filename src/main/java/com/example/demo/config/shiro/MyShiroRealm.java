@@ -47,7 +47,7 @@ private UserService userService;
         //根据主身份信息获取角色 和 权限信息
         Set<String> roles = new HashSet<>();
         Role role = roleService.getRoleByUserName(account);
-        roles.add(role.getRoleName());
+        roles.add(role.getName());
         info.setRoles(roles);
         return info;
 

@@ -9,10 +9,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 //@EnableRabbit
 @SpringBootApplication
+//@ComponentScan(value = "com.example.demo")
 public class DemoApplication extends ServletInitializer {
 
     public static void main(String[] args) {

@@ -58,20 +58,20 @@ public abstract class UBaseEntity<T extends Model<?>> extends Model<T>  {
         return this.id;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (null == obj) {
-            return false;
-        }
-        if (this == obj) {
-            return true;
-        }
-        if (!getClass().equals(obj.getClass())) {
-            return false;
-        }
-        UBaseEntity<?> that = (UBaseEntity<?>) obj;
-        return null != this.getId() && this.getId().equals(that.getId());
-    }
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (null == obj) {
+//            return false;
+//        }
+//        if (this == obj) {
+//            return true;
+//        }
+//        if (!getClass().equals(obj.getClass())) {
+//            return false;
+//        }
+//        UBaseEntity<?> that = (UBaseEntity<?>) obj;
+//        return null != this.getId() && this.getId().equals(that.getId());
+//    }
 
 
 }

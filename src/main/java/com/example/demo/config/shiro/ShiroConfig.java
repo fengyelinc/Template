@@ -40,12 +40,20 @@ public class ShiroConfig {
 
         Map<String, String> filterMap = new LinkedHashMap<>();
         // <!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
+        // SWAGGER2过滤【START】
+        filterMap.put("/doc.html/**", "anon");
+//        filterMap.put("/swagger-ui.html", "anon");
+        filterMap.put("/swagger-resources/**", "anon");
+        filterMap.put("/v2/**", "anon");
+        filterMap.put("/webjars/**", "anon");
+        // SWAGGER2过滤【END】
         //配置系统公共资源
         filterMap.put("/login", "anon");
         filterMap.put("/login/main", "anon");
         filterMap.put("/register", "anon");
         filterMap.put("/submit/register", "anon");
         filterMap.put("/static/**","anon");
+        filterMap.put("/api/**", "anon");         //这里需要放开才能进mvc的拦截
         //配置系统受限资源
         filterMap.put("/user/**", "authc");
         filterMap.put("/**", "authc");           //主要这行代码必须放在所有权限设置的最后，不然会导致所有 url 都被拦截 剩余的都需要认证

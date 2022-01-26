@@ -26,7 +26,9 @@
         <mybatis-plus-boot-starter.version>3.3.2</mybatis-plus-boot-starter.version>
         <fastjson.version>1.2.41</fastjson.version>
         <jackson.version>2.9.3</jackson.version>
-
+        <poi.version>3.16</poi.version>
+        <swagger.version>2.9.2</swagger.version>
+        <java-jwt.version>3.9.0</java-jwt.version>
     </properties>
 
     <repositories>
@@ -37,6 +39,13 @@
     </repositories>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>${java-jwt.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -48,7 +57,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
 
 
         <!--tomcat所需依赖-->
@@ -95,11 +103,6 @@
         </dependency>
 
         <!--shiro  begin-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.shiro</groupId>-->
-<!--            <artifactId>shiro-spring</artifactId>-->
-<!--            <version>1.4.0</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring-boot-starter</artifactId>
@@ -172,12 +175,6 @@
         </dependency>
 
         <!--rabbitmq-->
-<!--        <dependency>-->
-<!--            <groupId>com.rabbitmq</groupId>-->
-<!--            <artifactId>amqp-client</artifactId>-->
-<!--            <version>5.9.0</version>-->
-<!--        </dependency>-->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
@@ -196,6 +193,55 @@
             <artifactId>jaxen</artifactId>
             <version>1.2.0</version>
         </dependency>
+
+        <!--poi  开始-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <!--poi  结束-->
+
+        <!--swagger-->
+<!--        <dependency>-->
+<!--            <groupId>io.springfox</groupId>-->
+<!--            <artifactId>springfox-swagger2</artifactId>-->
+<!--            <version>${swagger.version}</version>-->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>io.swagger</groupId>-->
+<!--                    <artifactId>swagger-models</artifactId>-->
+<!--                </exclusion>-->
+<!--                &lt;!&ndash;<exclusion>&ndash;&gt;-->
+<!--                &lt;!&ndash;<artifactId>guava</artifactId>&ndash;&gt;-->
+<!--                &lt;!&ndash;<groupId>com.google.guava</groupId>&ndash;&gt;-->
+<!--                &lt;!&ndash;</exclusion>&ndash;&gt;-->
+<!--            </exclusions>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.github.xiaoymin</groupId>-->
+<!--            <artifactId>swagger-bootstrap-ui</artifactId>-->
+<!--            <version>1.9.0</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <!--在引用时请在maven中央仓库搜索最新版本号-->
+            <version>2.0.2</version>
+        </dependency>
+
+
+
 
 
     </dependencies>

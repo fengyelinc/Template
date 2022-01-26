@@ -18,4 +18,5 @@ public class RedisCacheManger implements CacheManager {
     public <K, V> Cache<K, V> getCache(String cacheName) throws CacheException {
         return new RedisCache<K, V>(cacheName);
     }
+
 }

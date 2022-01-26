@@ -108,7 +108,7 @@ h1, h2, h3, h4, h5, h6 {
 	-moz-border-bottom-left-radius: 10px;
 	-webkit-border-bottom-left-radius: 10px;
 	border-bottom-left-radius: 10px;
-	background-image: url(../images/login_bg.jpg);
+	background-image: url(../images/layui.png);
 	background-repeat: no-repeat;
 }
 .login>.login_main>.main_right{
