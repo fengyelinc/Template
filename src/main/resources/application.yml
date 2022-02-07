@@ -64,3 +64,6 @@ mybatis-plus:
     cache-enabled: false
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+#log4j2
+logging:
+  config: classpath:log4j2.xml

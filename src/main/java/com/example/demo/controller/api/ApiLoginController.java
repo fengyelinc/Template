@@ -1,12 +1,11 @@
 package com.example.demo.controller.api;
 
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.example.demo.base.RestResponse;
-import com.example.demo.config.cache.RedisCache;
 import com.example.demo.entity.User;
 import com.example.demo.entity.VO.UserVO;
 import com.example.demo.service.UserService;
 import com.example.demo.utils.JWTHelper;
+import com.example.demo.utils.RedisUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -17,10 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.Objects;
 
 @Api
@@ -34,7 +31,7 @@ public class ApiLoginController {
 
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisUtil redisUtil;
 
     /**
      * 用户注册/登录
@@ -79,7 +76,8 @@ public class ApiLoginController {
             String token = JWTHelper.generTokenByRS256(result);
             response.setHeader("token",token);
             //TODO 用户信息放入缓存  redis缓存配置待完善
-            RedisCache<String, String> redisCache = new RedisCache<>();
+            redisUtil.set("user"+result.getAccount(),result.getName());
+            System.out.println(redisUtil.get("user"+result.getAccount()));
         } catch (Exception e) {
             log.error("系统异常", e);
         }

@@ -1,7 +1,6 @@
 package com.example.demo.config.shiro;
 
 
-import com.example.demo.config.cache.RedisCacheManger;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.SecurityManager;
@@ -9,7 +8,7 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
-import org.springframework.cache.ehcache.EhCacheCacheManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheManager;
@@ -25,6 +24,9 @@ import java.util.Map;
  */
 @Configuration
 public class ShiroConfig {
+
+    @Autowired
+    private RedisCacheManager cacheManager;
 
     /**
      * 拦截所有请求request，，区分访问公共资源/受限资源
@@ -97,7 +99,8 @@ public class ShiroConfig {
         myShiroRealm.setCredentialsMatcher(credentialsMatcher);
 
         //开启缓存管理(本地缓存Ehcache)
-        myShiroRealm.setCacheManager(new RedisCacheManger());
+        myShiroRealm.setCacheManager(new ShiroCacheManger());
+//        myShiroRealm.setCacheManager(cacheManager);
         myShiroRealm.setCachingEnabled(true);  //开启缓存
         myShiroRealm.setAuthenticationCachingEnabled(true);  //开启认证缓存
         myShiroRealm.setAuthenticationCacheName("authentication");

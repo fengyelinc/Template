@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.annotation.MapperScans;
@@ -14,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 //@EnableRabbit
 @SpringBootApplication
-//@ComponentScan(value = "com.example.demo")
+@Slf4j
 public class DemoApplication extends ServletInitializer {
 
     public static void main(String[] args) {
