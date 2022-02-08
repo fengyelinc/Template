@@ -2,6 +2,7 @@ package com.example.demo.controller.api;
 
 import com.example.demo.annotation.UserLoginToken;
 import com.example.demo.base.RestResponse;
+import com.example.demo.base.Result;
 import com.example.demo.entity.User;
 import com.example.demo.entity.VO.UserVO;
 import com.example.demo.service.UserService;
@@ -13,6 +14,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,8 +30,9 @@ public class ApiUserController {
     @ApiOperation(value = "获取用户信息")
     @PostMapping("userInfo")
     @UserLoginToken
-    public RestResponse getUserInfo(HttpServletRequest request) {
-        RestResponse res = new RestResponse();
+    @ResponseBody
+    public Result getUserInfo(HttpServletRequest request) {
+//        RestResponse res = new RestResponse();
         User user = null;
         try {
             user = JWTHelper.getUserInfo(request.getHeader("token"));
@@ -39,6 +42,6 @@ public class ApiUserController {
         UserVO userVO = new UserVO();
         User user1 = userService.selectUserByAccount(user.getAccount());
         BeanUtils.copyProperties(user1, userVO);
-        return res.setData(userVO);
+        return Result.success(userVO);
     }
 }

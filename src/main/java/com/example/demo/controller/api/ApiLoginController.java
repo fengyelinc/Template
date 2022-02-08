@@ -1,6 +1,8 @@
 package com.example.demo.controller.api;
 
 import com.example.demo.base.RestResponse;
+import com.example.demo.base.Result;
+import com.example.demo.base.ResultMsgEnum;
 import com.example.demo.entity.User;
 import com.example.demo.entity.VO.UserVO;
 import com.example.demo.service.UserService;
@@ -42,14 +44,14 @@ public class ApiLoginController {
      */
     @ApiOperation(value = "用户注册/登录")
     @PostMapping("regOrLogin")
-    public RestResponse register(@RequestBody UserVO uservo, HttpServletResponse response, HttpServletRequest request) {
+    public Result register(@RequestBody UserVO uservo, HttpServletResponse response, HttpServletRequest request) {
         RestResponse res = new RestResponse();
         //校验用户信息
         if (Objects.isNull(uservo.getAccount())) {
-            return RestResponse.failure("请输入账号");
+            return Result.error(ResultMsgEnum.PARAMETER_ERROR.getCode(),"请输入账号");
         }
         if (Objects.isNull(uservo.getPassword())) {
-            return RestResponse.failure("请输入密码");
+            return Result.error(ResultMsgEnum.PARAMETER_ERROR.getCode(),"请输入密码");
         }
         //判断用户是否注册
         User user = userService.selectUserByAccount(uservo.getAccount());
@@ -60,11 +62,11 @@ public class ApiLoginController {
             user.setPassword(DigestUtils.md5DigestAsHex(uservo.getPassword().getBytes()));
             boolean flag = userService.save(user);
             if (!flag) {
-                return RestResponse.failure("系统异常");
+                return Result.error(ResultMsgEnum.SERVER_BUSY.getCode(),"系统异常");
             }
         } else {  //登录
             if (!DigestUtils.md5DigestAsHex(uservo.getPassword().getBytes()).equals(user.getPassword())) {
-                return RestResponse.failure("密码错误");
+                return Result.error(ResultMsgEnum.PARAMETER_ERROR.getCode(),"密码错误");
             }
         }
         //组装返回值
@@ -81,7 +83,7 @@ public class ApiLoginController {
         } catch (Exception e) {
             log.error("系统异常", e);
         }
-        return res.setData(result).setMessage("登陆成功");
+        return Result.success(result);
     }
 
 
