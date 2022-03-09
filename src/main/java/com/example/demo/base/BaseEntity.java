@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public abstract class UBaseEntity<T extends Model<?>> extends Model<T>  {
+public abstract class BaseEntity<T extends Model<?>> extends Model<T>  {
 
     /**
      * 实体编号（唯一标识）

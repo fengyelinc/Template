@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * todo:
+ * 通过RedisUtils 使用reids的配置
  */
 @EnableCaching
 @Configuration

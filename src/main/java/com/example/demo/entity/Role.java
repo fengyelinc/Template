@@ -1,10 +1,8 @@
 package com.example.demo.entity;
 
-import java.io.Serializable;
-
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.example.demo.base.UBaseEntity;
+import com.example.demo.base.BaseEntity;
 import lombok.Data;
 
 /**
@@ -16,7 +14,7 @@ import lombok.Data;
 @Data
 @SuppressWarnings("serial")
 @TableName("role")
-public class Role extends UBaseEntity<Role> {
+public class Role extends BaseEntity<Role> {
 
 
     /**
