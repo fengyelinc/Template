@@ -58,6 +58,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 return true;
             }
         }
+
         //查看有没有需要用户权限的注解UserLoginToken
         if (method.isAnnotationPresent(UserLoginToken.class)) {
             UserLoginToken userLoginToken = method.getAnnotation(UserLoginToken.class);

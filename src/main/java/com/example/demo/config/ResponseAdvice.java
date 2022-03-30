@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 /**
- *
+ *  全局返回值处理
+ *  问题：会影响到swagger
  */
 @RestControllerAdvice
 public class ResponseAdvice implements ResponseBodyAdvice<Object> {
@@ -22,13 +23,15 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
 
     /**
      * 是否开启功能 true  ：是
-     * @param methodParameter
+     * 判断是否要执行 beforeBodyWrite 方法，true为执行，false不执行，有注解标记的时候处理返回值
+     * 这里整合swagger出现了问题，swagger相关的不拦截
+     * @param returnType
      * @param aClass
      * @return
      */
     @Override
-    public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {
-        return true;
+    public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> aClass) {
+        return !returnType.getDeclaringClass().getName().contains("springfox");
     }
 
     /**

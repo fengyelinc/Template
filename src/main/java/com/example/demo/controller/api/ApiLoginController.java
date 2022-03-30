@@ -6,6 +6,7 @@ import com.example.demo.base.ResultMsgEnum;
 import com.example.demo.entity.User;
 import com.example.demo.entity.VO.UserVO;
 import com.example.demo.service.UserService;
+import com.example.demo.utils.AccessIpUtils;
 import com.example.demo.utils.JWTHelper;
 import com.example.demo.utils.RedisUtil;
 import io.swagger.annotations.Api;
@@ -45,6 +46,8 @@ public class ApiLoginController {
     @ApiOperation(value = "用户注册/登录")
     @PostMapping("regOrLogin")
     public Result register(@RequestBody UserVO uservo, HttpServletResponse response, HttpServletRequest request) {
+        String clientIp = AccessIpUtils.getClientIp(request);
+        System.out.println("访问IP: "+clientIp);
         RestResponse res = new RestResponse();
         //校验用户信息
         if (Objects.isNull(uservo.getAccount())) {
