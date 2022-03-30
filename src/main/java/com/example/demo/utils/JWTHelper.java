@@ -7,6 +7,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
 import com.example.demo.entity.User;
 
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -14,11 +15,11 @@ public class JWTHelper {
     private static final String ISSUER = "FENG_YE_LIN";
     /*------------------------------Using RS256---------------------------------*/
     /*获取签发的token，返回给前端*/
-    public static String generTokenByRS256(User user) throws Exception{
+    public static String generTokenByRS256(Object t) throws Exception{
         RSA256Key rsa256Key = SecretKeyHelper.getRSA256Key(); // 获取公钥/私钥
         Algorithm algorithm = Algorithm.RSA256(
                 rsa256Key.getPublicKey(),rsa256Key.getPrivateKey());
-        return createToken(algorithm, user);
+        return createToken(algorithm, t);
     }
 
     /*签发token*/

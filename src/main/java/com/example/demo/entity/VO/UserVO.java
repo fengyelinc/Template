@@ -14,9 +14,9 @@ import com.example.demo.entity.User;
  */
 @Data
 @SuppressWarnings("serial")
-@ApiModel(value="uservo",description="用户对象uservo")
-public class UserVO extends User {
-
-    private String token;
-
+//@ApiModel(value="uservo",description="用户对象uservo")
+public class UserVO  {
+    private String id;
+    private String name;
+    private String account;
 }

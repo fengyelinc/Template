@@ -28,7 +28,7 @@ public class SwaggerConfiguration {
                 .groupName("2.X版本")
                 .select()
                 //这里指定Controller扫描包路径(项目路径也行)
-                .apis(RequestHandlerSelectors.basePackage("com.example.demo.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.example.demo.controller.api"))
                 .paths(PathSelectors.any())
                 .build();
         return docket;

@@ -13,7 +13,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,30 +44,30 @@ public class ApiLoginController {
      */
     @ApiOperation(value = "用户注册/登录")
     @PostMapping("regOrLogin")
-    public Result register(@RequestBody UserVO uservo, HttpServletResponse response, HttpServletRequest request) {
+    public Result register(@RequestBody User guest, HttpServletResponse response, HttpServletRequest request) {
         String clientIp = AccessIpUtils.getClientIp(request);
         System.out.println("访问IP: "+clientIp);
         RestResponse res = new RestResponse();
         //校验用户信息
-        if (Objects.isNull(uservo.getAccount())) {
+        if (Objects.isNull(guest.getAccount())) {
             return Result.error(ResultMsgEnum.PARAMETER_ERROR.getCode(),"请输入账号");
         }
-        if (Objects.isNull(uservo.getPassword())) {
+        if (Objects.isNull(guest.getPassword())) {
             return Result.error(ResultMsgEnum.PARAMETER_ERROR.getCode(),"请输入密码");
         }
         //判断用户是否注册
-        User user = userService.selectUserByAccount(uservo.getAccount());
+        User user = userService.selectUserByAccount(guest.getAccount());
         //注册
         if (Objects.isNull(user)) {
             user = new User();
-            user.setAccount(uservo.getAccount());
-            user.setPassword(DigestUtils.md5DigestAsHex(uservo.getPassword().getBytes()));
+            user.setAccount(guest.getAccount());
+            user.setPassword(DigestUtils.md5DigestAsHex(guest.getPassword().getBytes()));
             boolean flag = userService.save(user);
             if (!flag) {
                 return Result.error(ResultMsgEnum.SERVER_BUSY.getCode(),"系统异常");
             }
         } else {  //登录
-            if (!DigestUtils.md5DigestAsHex(uservo.getPassword().getBytes()).equals(user.getPassword())) {
+            if (!DigestUtils.md5DigestAsHex(guest.getPassword().getBytes()).equals(user.getPassword())) {
                 return Result.error(ResultMsgEnum.PARAMETER_ERROR.getCode(),"密码错误");
             }
         }

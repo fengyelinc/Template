@@ -32,7 +32,7 @@ public class MyBeanUtils {
         user.setName("cc").setAccount("123").setPassword("123");
         UserVO userVO = new UserVO();
         MyBeanUtils.bean2VO(user, userVO);
-        System.out.println(userVO.getName() + userVO.getAccount() + userVO.getPassword());
+
     }
 
 }
