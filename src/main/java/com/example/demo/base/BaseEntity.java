@@ -22,7 +22,7 @@ public abstract class BaseEntity<T extends Model<?>> extends Model<T>  {
     /**
      *  创建者
      */
-    @TableField(value = "creator", fill = FieldFill.INSERT)
+    @TableField(value = "createBy", fill = FieldFill.INSERT)
     protected String creator;
 
 
@@ -50,7 +50,7 @@ public abstract class BaseEntity<T extends Model<?>> extends Model<T>  {
      * 逻辑删除（Y：正常；N：删除；A：审核；）
      */
     @TableField(value = "isDel")
-    protected Boolean isDel;
+    protected Integer isDel;
 
 
     @Override

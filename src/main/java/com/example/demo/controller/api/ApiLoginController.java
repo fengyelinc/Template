@@ -1,7 +1,7 @@
 package com.example.demo.controller.api;
 
 import com.example.demo.base.RestResponse;
-import com.example.demo.base.Result;
+import com.example.demo.base.ResultData;
 import com.example.demo.base.ResultMsgEnum;
 import com.example.demo.entity.User;
 import com.example.demo.entity.VO.UserVO;
@@ -38,22 +38,22 @@ public class ApiLoginController {
     /**
      * 用户注册/登录
      *
-     * @param uservo
+     * @param guest
      * @param response
      * @return
      */
     @ApiOperation(value = "用户注册/登录")
     @PostMapping("regOrLogin")
-    public Result register(@RequestBody User guest, HttpServletResponse response, HttpServletRequest request) {
+    public ResultData register(@RequestBody User guest, HttpServletResponse response, HttpServletRequest request) {
         String clientIp = AccessIpUtils.getClientIp(request);
         System.out.println("访问IP: "+clientIp);
         RestResponse res = new RestResponse();
         //校验用户信息
         if (Objects.isNull(guest.getAccount())) {
-            return Result.error(ResultMsgEnum.PARAMETER_ERROR.getCode(),"请输入账号");
+            return ResultData.error(ResultMsgEnum.PARAMETER_ERROR.getCode(),"请输入账号");
         }
         if (Objects.isNull(guest.getPassword())) {
-            return Result.error(ResultMsgEnum.PARAMETER_ERROR.getCode(),"请输入密码");
+            return ResultData.error(ResultMsgEnum.PARAMETER_ERROR.getCode(),"请输入密码");
         }
         //判断用户是否注册
         User user = userService.selectUserByAccount(guest.getAccount());
@@ -64,11 +64,11 @@ public class ApiLoginController {
             user.setPassword(DigestUtils.md5DigestAsHex(guest.getPassword().getBytes()));
             boolean flag = userService.save(user);
             if (!flag) {
-                return Result.error(ResultMsgEnum.SERVER_BUSY.getCode(),"系统异常");
+                return ResultData.error(ResultMsgEnum.SERVER_BUSY.getCode(),"系统异常");
             }
         } else {  //登录
             if (!DigestUtils.md5DigestAsHex(guest.getPassword().getBytes()).equals(user.getPassword())) {
-                return Result.error(ResultMsgEnum.PARAMETER_ERROR.getCode(),"密码错误");
+                return ResultData.error(ResultMsgEnum.PARAMETER_ERROR.getCode(),"密码错误");
             }
         }
         //组装返回值
@@ -85,7 +85,7 @@ public class ApiLoginController {
         } catch (Exception e) {
             log.error("系统异常", e);
         }
-        return Result.success(result);
+        return ResultData.success(result);
     }
 
 

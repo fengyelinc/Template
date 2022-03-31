@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.SysMenuMapper">
+    <sql id="Base_Column_List">
+        id,
+        name,
+        parent_id,
+        level,
+        parent_ids,
+        sort,
+        href,
+        target,
+        icon,
+        bg_color,
+        is_show,
+        permission,
+        remarks,
+        is_del,
+        type,
+        creater,
+        createTime,
+        updater,
+        updateTime
+        <!--删除最后一个,-->
+    </sql>
+
+    <select id="selectAll" resultType="com.example.demo.entity.SysMenu">
+        select
+        <include refid="Base_Column_List" />
+         from
+        sys_menu
+    </select>
+
+    <select id="selectByPid" resultType="com.example.demo.entity.SysMenu">
+        select
+        <include refid="Base_Column_List" />
+        from
+        sys_menu
+        where
+        parent_id=#{parentId}
+    </select>
+
+
+</mapper>
+

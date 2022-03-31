@@ -1,8 +1,7 @@
 package com.example.demo.controller.api;
 
 import com.example.demo.annotation.UserLoginToken;
-import com.example.demo.base.RestResponse;
-import com.example.demo.base.Result;
+import com.example.demo.base.ResultData;
 import com.example.demo.entity.User;
 import com.example.demo.entity.VO.UserVO;
 import com.example.demo.service.UserService;
@@ -31,7 +30,7 @@ public class ApiUserController {
     @PostMapping("userInfo")
     @UserLoginToken
     @ResponseBody
-    public Result getUserInfo(HttpServletRequest request) {
+    public ResultData getUserInfo(HttpServletRequest request) {
 //        RestResponse res = new RestResponse();
         User user = null;
         try {
@@ -42,6 +41,6 @@ public class ApiUserController {
         UserVO userVO = new UserVO();
         User user1 = userService.selectUserByAccount(user.getAccount());
         BeanUtils.copyProperties(user1, userVO);
-        return Result.success(userVO);
+        return ResultData.success(userVO);
     }
 }

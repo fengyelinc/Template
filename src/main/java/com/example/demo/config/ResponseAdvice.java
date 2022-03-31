@@ -1,6 +1,6 @@
 package com.example.demo.config;
 
-import com.example.demo.base.Result;
+import com.example.demo.base.ResultData;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,14 +49,14 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
         //处理字符串类型数据
         if(o instanceof String){
             try {
-                return objectMapper.writeValueAsString(Result.success(o));
+                return objectMapper.writeValueAsString(ResultData.success(o));
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
         }
-        if(o instanceof Result){
+        if(o instanceof ResultData){
             return o;
         }
-        return Result.success(o);
+        return ResultData.success(o);
     }
 }
