@@ -18,6 +18,13 @@ public class ResultData<T> {
         this.message = message;
     }
 
+    public static <T> ResultData<T> success() {
+        ResultData<T> resultData = new ResultData<T>();
+        resultData.setCode(ResultMsgEnum.SUCCESS.getCode());
+        resultData.setMessage(ResultMsgEnum.SUCCESS.getMessage());
+        return resultData;
+    }
+
     /**
      * 成功
      */
@@ -29,10 +36,25 @@ public class ResultData<T> {
         return resultData;
     }
 
+
+    public static <T> ResultData<T> failure() {
+        ResultData<T> resultData = new ResultData<T>();
+        resultData.setCode(ResultMsgEnum.FAIL.getCode());
+        resultData.setMessage(ResultMsgEnum.FAIL.getMessage());
+        return resultData;
+    }
+
+    public static <T> ResultData<T> failure(String message) {
+        ResultData<T> resultData = new ResultData<T>();
+        resultData.setCode(ResultMsgEnum.FAIL.getCode());
+        resultData.setMessage(message);
+        return resultData;
+    }
+
     /**
      * 失败
      */
-    public static <T> ResultData<T> error(int code, String message) {
+    public static <T> ResultData<T> failure(int code, String message) {
         return new ResultData(code, message);
     }
 

@@ -50,10 +50,10 @@ public class ApiLoginController {
         RestResponse res = new RestResponse();
         //校验用户信息
         if (Objects.isNull(guest.getAccount())) {
-            return ResultData.error(ResultMsgEnum.PARAMETER_ERROR.getCode(),"请输入账号");
+            return ResultData.failure(ResultMsgEnum.PARAMETER_ERROR.getCode(),"请输入账号");
         }
         if (Objects.isNull(guest.getPassword())) {
-            return ResultData.error(ResultMsgEnum.PARAMETER_ERROR.getCode(),"请输入密码");
+            return ResultData.failure(ResultMsgEnum.PARAMETER_ERROR.getCode(),"请输入密码");
         }
         //判断用户是否注册
         User user = userService.selectUserByAccount(guest.getAccount());
@@ -64,11 +64,11 @@ public class ApiLoginController {
             user.setPassword(DigestUtils.md5DigestAsHex(guest.getPassword().getBytes()));
             boolean flag = userService.save(user);
             if (!flag) {
-                return ResultData.error(ResultMsgEnum.SERVER_BUSY.getCode(),"系统异常");
+                return ResultData.failure(ResultMsgEnum.SERVER_BUSY.getCode(),"系统异常");
             }
         } else {  //登录
             if (!DigestUtils.md5DigestAsHex(guest.getPassword().getBytes()).equals(user.getPassword())) {
-                return ResultData.error(ResultMsgEnum.PARAMETER_ERROR.getCode(),"密码错误");
+                return ResultData.failure(ResultMsgEnum.PARAMETER_ERROR.getCode(),"密码错误");
             }
         }
         //组装返回值

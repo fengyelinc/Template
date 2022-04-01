@@ -41,5 +41,9 @@
     </select>
 
 
+    <insert id="save">
+
+    </insert>
+
 </mapper>
 

@@ -15,7 +15,7 @@ import lombok.experimental.Accessors;
 /**
  * (User)表实体类
  *
- * @author makejava
+ * @author cc
  * @since 2021-09-07 16:45:16
  */
 @Data

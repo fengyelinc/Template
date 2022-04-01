@@ -22,7 +22,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResultData Execption(Exception e) {
         log.error("未知异常！", e);
-        return ResultData.error(ResultMsgEnum.SERVER_BUSY.getCode(), ResultMsgEnum.SERVER_BUSY.getMessage());
+        return ResultData.failure(ResultMsgEnum.SERVER_BUSY.getCode(), ResultMsgEnum.SERVER_BUSY.getMessage());
     }
 
 

@@ -16,7 +16,7 @@ import java.util.Date;
 
 @Data
 @ApiModel("菜单")
-public class SysMenu extends BaseEntity<SysMenu> {
+public class SysMenu {
 
 
     @TableId(type = IdType.AUTO)
@@ -88,6 +88,7 @@ public class SysMenu extends BaseEntity<SysMenu> {
     @ApiModelProperty(value = "权限标识")
     private String permission;
 
+    @ApiModelProperty(value = "备注")
     private String remarks;
 
     /**
@@ -102,12 +103,16 @@ public class SysMenu extends BaseEntity<SysMenu> {
     @ApiModelProperty(value = "类型：0：菜单 1：按钮")
     private String type;
 
+    @ApiModelProperty(hidden = true)
     private String creater;
 
+    @ApiModelProperty(hidden = true)
     private Date createtime;
 
+    @ApiModelProperty(hidden = true)
     private String updater;
 
+    @ApiModelProperty(hidden = true)
     private Date updatetime;
 
 }

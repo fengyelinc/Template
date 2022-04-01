@@ -22,8 +22,8 @@ public abstract class BaseEntity<T extends Model<?>> extends Model<T>  {
     /**
      *  创建者
      */
-    @TableField(value = "createBy", fill = FieldFill.INSERT)
-    protected String creator;
+    @TableField(value = "creater", fill = FieldFill.INSERT)
+    protected String creater;
 
 
     /**

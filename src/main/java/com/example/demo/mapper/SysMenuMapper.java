@@ -14,6 +14,8 @@ public interface SysMenuMapper extends BaseMapper<SysMenu> {
 
 
     List<SysMenu> selectByPid(@Param("parentId") String parentId);
+
+    int save(@Param("sysMenu")SysMenu sysMenu);
 }
 
 
