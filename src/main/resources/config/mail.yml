@@ -1,0 +1,27 @@
+mail:
+  protocol: smtp
+  # 配置 SMTP 服务器地址
+  host: smtp.263.net
+  # 端口号465或587
+  port: 465
+  # 发送者昵称
+  nickname: chefRobot
+  # 发送者邮箱
+  username: noreply@grandlink-int.com
+  # 配置密码，注意不是真正的密码，而是单独申请的授权码
+  password: 1EB1E6A1575225c7
+  # 默认的邮件编码为UTF-8
+  default-encoding: UTF-8
+  test-connection: true
+   # 配置SSL 加密工厂
+  properties:
+    mail:
+      smtp:
+        auth: true
+        starttls:
+          enable: true
+          required: true
+        ssl.enable: true
+        socketFactory.class: javax.net.ssl.SSLSocketFactory
+      # 开启DEBUG模式，邮件发送过程的日志会在控制台打印出来
+      debug: true
